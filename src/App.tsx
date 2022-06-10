@@ -6,9 +6,23 @@ import './styles/App.scss';
 
 export default function App() {
 	const containerRef = useRef<HTMLDivElement>(null);
+	// const ref = useRef(null);
+	// const [progress, setProgress] = useState(0);
+	// const { scrollYProgress } = useElementScroll(ref);
+	// const scale = useTransform(
+	// 	scrollYProgress,
+	// 	[0, 0.33, 0.66, 1],
+	// 	[0.5, 0.75, 0.5, 1]
+	// );
 
-	function handleChangePianoOffset(offset: number) {
-		containerRef.current?.scrollTo({ behavior: 'smooth', left: offset });
+	function handleChangePianoOffset(
+		offset: number,
+		behavior: 'auto' | 'smooth'
+	) {
+		containerRef.current?.scrollTo({
+			behavior,
+			left: offset,
+		});
 	}
 
 	useEffect(() => {}, []);

@@ -31,9 +31,11 @@ export default function Brush({ pianoWidth }: Props) {
 
 		const keyWidth = pianoWidth / WHITE_NOTES_QTD;
 		const targetKeyIdx = Math.floor(target / keyWidth);
-		const targetKeyPos = keyWidth * (targetKeyIdx + 1);
+		const targetKeyPos = keyWidth * targetKeyIdx;
 
-		setFirstVisibleNoteIndex(targetKeyIdx + 1);
+		// gotta debug this:
+		setFirstVisibleNoteIndex(targetKeyIdx);
+		// setFirstVisibleNoteIndex(targetKeyIdx);
 
 		if (target >= rightLimit) {
 			return rightLimit;
@@ -42,7 +44,7 @@ export default function Brush({ pianoWidth }: Props) {
 		return targetKeyPos;
 	}
 
-	useEffect(updateBrush, [visibleKeys, pianoWidth]);
+	useEffect(updateBrush, [visibleKeys, pianoWidth, screenWidth]);
 
 	useEffect(() => {
 		const brushOverflowed = x.get() + brushWidth > pianoWidth;
@@ -50,6 +52,8 @@ export default function Brush({ pianoWidth }: Props) {
 		if (brushOverflowed) {
 			x.updateAndNotify(pianoWidth - brushWidth);
 		}
+
+		snapToClosestKey(x.get());
 	}, [brushWidth]);
 
 	return (
