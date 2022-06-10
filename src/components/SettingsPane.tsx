@@ -16,7 +16,12 @@ export const SettingsPane: React.FC<ISettingsPaneProps> = props => {
 
 	return (
 		<div id="SettingsPane">
-			<select onChange={handleVisibleKeysChange} value={visibleKeys}>
+			<label htmlFor="visibleKeys">Visible Keys</label>
+			<select
+				id="visibleKeys"
+				onChange={handleVisibleKeysChange}
+				value={visibleKeys}
+			>
 				{visibleKeysOptions.map(qtd => (
 					<option key={qtd} value={qtd}>
 						{qtd}

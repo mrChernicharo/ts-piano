@@ -1,4 +1,46 @@
 #MiniPiano {
-	border: 1px solid red;
+	--key-width: calc(var(--miniPianoMainWidth) / var(--whiteNotes));
+	--black-key-width: calc(var(--key-width) * 0.7);
+	border: 1px solid blue;
 	width: 100vw;
+	display: flex;
+
+	aside {
+		width: var(--miniPianoAsideWidth);
+	}
+	main {
+		display: flex;
+		position: relative;
+		width: var(--miniPianoMainWidth);
+
+		.piano-key {
+			&.white {
+				width: var(--key-width);
+				background-color: white;
+				border-right: 1px solid #aaa;
+			}
+
+			&.black {
+				border: 1px solid #aaa;
+				border-bottom-right-radius: 3px;
+				border-bottom-left-radius: 3px;
+				position: relative;
+				height: 55%;
+				width: var(--black-key-width);
+				margin-right: calc(calc(var(--black-key-width) / 2) * -1);
+				margin-left: calc(calc(var(--black-key-width) / 2) * -1);
+				z-index: 2;
+				background-color: black;
+			}
+		}
+
+		.brush {
+			position: absolute;
+			background-color: #777;
+			height: 100%;
+			opacity: 0.5;
+			z-index: 4;
+			transition: 0.2s;
+		}
+	}
 }
