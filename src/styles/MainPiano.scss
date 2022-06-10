@@ -1,4 +1,35 @@
 #MainPiano {
 	// border: 1px solid red;
 	// width: 100vw;
+	--key-width: 80px;
+	--black-key-width: calc(var(--key-width) * 0.6);
+
+	main {
+		display: flex;
+		position: relative;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+
+		.piano-key {
+			&.white {
+				width: var(--key-width);
+				background-color: white;
+				border-right: 1px solid #aaa;
+			}
+
+			&.black {
+				border: 1px solid #aaa;
+				border-bottom-right-radius: 3px;
+				border-bottom-left-radius: 3px;
+				position: relative;
+				height: 55%;
+				width: var(--black-key-width);
+				margin-right: calc(calc(var(--black-key-width) / 2) * -1);
+				margin-left: calc(calc(var(--black-key-width) / 2) * -1);
+				z-index: 2;
+				background-color: black;
+			}
+		}
+	}
 }

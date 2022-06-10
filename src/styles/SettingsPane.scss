@@ -1,4 +1,10 @@
 #SettingsPane {
 	// border: 1px solid red;
 	// width: 100vw;
+	display: flex;
+	align-items: center;
+
+	.select-container {
+		height: 50px;
+	}
 }

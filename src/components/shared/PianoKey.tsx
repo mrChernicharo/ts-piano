@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { isFlat } from '../lib/helpers';
+import { isFlat } from '../../lib/helpers';
 
 interface IPianoKeyProps {
 	note: string;

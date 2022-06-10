@@ -1,6 +1,6 @@
 #MiniPiano {
-	--key-width: calc(var(--miniPianoMainWidth) / var(--whiteNotes));
-	--black-key-width: calc(var(--key-width) * 0.7);
+	--mini-key-width: calc(var(--miniPianoMainWidth) / var(--whiteNotes));
+	--black-key-width: calc(var(--mini-key-width) * 0.7);
 	border: 1px solid blue;
 	width: 100vw;
 	display: flex;
@@ -15,7 +15,7 @@
 
 		.piano-key {
 			&.white {
-				width: var(--key-width);
+				width: var(--mini-key-width);
 				background-color: white;
 				border-right: 1px solid #aaa;
 			}

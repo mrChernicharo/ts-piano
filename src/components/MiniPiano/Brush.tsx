@@ -1,8 +1,8 @@
 import { motion, useMotionValue } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useScreenWidth } from '../hooks/useScreenWidth';
-import { useSettingsContext } from '../hooks/useSettingsContext';
-import { WHITE_NOTES_QTD } from '../lib/constants';
+import { useScreenWidth } from '../../hooks/useScreenWidth';
+import { useSettingsContext } from '../../hooks/useSettingsContext';
+import { WHITE_NOTES_QTD } from '../../lib/constants';
 
 interface Props {
 	pianoWidth: number;

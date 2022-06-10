@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import { useElementWidth } from '../hooks/useElementWidth';
-import { NOTES } from '../lib/constants';
-import '../styles/MiniPiano.scss';
+import { useElementWidth } from '../../hooks/useElementWidth';
+import { NOTES } from '../../lib/constants';
+import '../../styles/MiniPiano.scss';
+import PianoKey from '../shared/PianoKey';
 import Brush from './Brush';
-import PianoKey from './PianoKey';
 
 interface IMiniPianoProps {}
 
