@@ -21,6 +21,8 @@
 			width: var(--miniPianoMainWidth);
 
 			.piano-key {
+				pointer-events: none;
+
 				&.white {
 					width: var(--mini-key-width);
 					background-color: white;

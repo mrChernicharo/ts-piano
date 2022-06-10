@@ -18,6 +18,19 @@ export const NOTES_QTD = NOTES.length;
 export const BLACK_NOTES_QTD = BLACK_NOTES.length;
 export const WHITE_NOTES_QTD = WHITE_NOTES.length;
 
+export const NOTE_COLORS: { [key: number]: string } = {
+	9: '#e6a85e',
+	8: '#ecc176',
+	7: '#e08e45',
+	6: '#f2db8e',
+	5: '#f8f4a6',
+	4: '#bdf7b7',
+	3: '#9ccab7',
+	2: '#7b9db7',
+	1: '#5a70b7',
+	0: '#3943b7',
+};
+
 console.log({
 	NOTES,
 	NOTES_QTD,

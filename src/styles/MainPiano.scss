@@ -8,9 +8,11 @@
 		position: relative;
 		height: 100%;
 		width: 100%;
-		overflow: auto;
+		overflow: hidden;
 
 		.piano-key {
+			transition: 0.7s;
+
 			&.white {
 				width: var(--key-width);
 				background-color: white;
@@ -20,10 +22,10 @@
 					position: absolute;
 					bottom: calc(var(--key-width) * 0.2);
 					width: var(--key-width);
+
 					// border: 1px solid red;
 
 					span {
-						// color: black;
 						font-size: min(calc(var(--key-width) * 0.36), 16px);
 						padding: calc(var(--key-width) * 0.1);
 					}
