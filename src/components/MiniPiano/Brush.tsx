@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Brush({ pianoWidth }: Props) {
-	const { visibleKeys } = useSettingsContext();
+	const { visibleKeys, setFirstVisibleNoteIndex } = useSettingsContext();
 
 	const brushRef = useRef<HTMLDivElement>(null);
 	const { width: screenWidth } = useScreenWidth();
@@ -24,12 +24,20 @@ export default function Brush({ pianoWidth }: Props) {
 	function snapToClosestKey(target: number) {
 		const [leftLimit, rightLimit] = [0, pianoWidth - brushWidth];
 
-		if (target <= 0) return leftLimit;
-		if (target >= rightLimit) return rightLimit;
+		if (target <= 0) {
+			setFirstVisibleNoteIndex(0);
+			return leftLimit;
+		}
 
 		const keyWidth = pianoWidth / WHITE_NOTES_QTD;
 		const targetKeyIdx = Math.floor(target / keyWidth);
 		const targetKeyPos = keyWidth * (targetKeyIdx + 1);
+
+		setFirstVisibleNoteIndex(targetKeyIdx + 1);
+
+		if (target >= rightLimit) {
+			return rightLimit;
+		}
 
 		return targetKeyPos;
 	}

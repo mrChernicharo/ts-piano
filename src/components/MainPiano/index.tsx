@@ -12,7 +12,7 @@ export const MainPiano: React.FC<IMainPianoProps> = props => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const pianoRef = useRef<HTMLDivElement>(null);
 	const { width: pianoWidth } = useElementWidth(pianoRef);
-	const { visibleKeys } = useSettingsContext();
+	const { visibleKeys, firstVisibleNoteIndex } = useSettingsContext();
 	const { width: screenWidth } = useScreenWidth();
 	const keyWidth = screenWidth / visibleKeys;
 	// const ref = useRef(null);
@@ -24,7 +24,9 @@ export const MainPiano: React.FC<IMainPianoProps> = props => {
 	// 	[0.5, 0.75, 0.5, 1]
 	// );
 
-	useEffect(() => {}, [containerRef]);
+	useEffect(() => {
+		console.log(firstVisibleNoteIndex);
+	}, [firstVisibleNoteIndex]);
 
 	return (
 		<div
