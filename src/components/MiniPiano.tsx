@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useElementWidth } from '../hooks/useElementWidth';
 import { useScreenWidth } from '../hooks/useScreenWidth';
@@ -15,6 +15,7 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 	const brushRef = useRef<HTMLDivElement>(null);
 	const { width: pianoWidth } = useElementWidth(pianoRef);
 	const { width: screenWidth } = useScreenWidth();
+	const x = useMotionValue(0);
 
 	const [brushWidth, setBrushWidth] = useState(0);
 
@@ -37,6 +38,14 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 
 	useEffect(() => updateBrush(), [visibleKeys, pianoWidth]);
 
+	useEffect(() => {
+		const brushOverflowed = x.get() + brushWidth > pianoWidth;
+
+		if (brushOverflowed) {
+			x.updateAndNotify(pianoWidth - brushWidth);
+		}
+	}, [brushWidth]);
+
 	return (
 		<div id="MiniPiano">
 			<aside>left aside</aside>
@@ -55,6 +64,7 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 					}}
 					style={{
 						width: brushWidth,
+						x,
 					}}
 				></motion.div>
 			</main>
