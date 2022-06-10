@@ -6,10 +6,11 @@ import { NOTES } from '../../lib/constants';
 import '../../styles/MainPiano.scss';
 import PianoKey from '../shared/PianoKey';
 
-interface IMainPianoProps {}
+interface Props {
+	onChangeOffset: (offset: number) => void;
+}
 
-export const MainPiano: React.FC<IMainPianoProps> = props => {
-	const containerRef = useRef<HTMLDivElement>(null);
+export function MainPiano({ onChangeOffset }: Props) {
 	const pianoRef = useRef<HTMLDivElement>(null);
 	const { width: pianoWidth } = useElementWidth(pianoRef);
 	const { visibleKeys, firstVisibleNoteIndex } = useSettingsContext();
@@ -25,21 +26,34 @@ export const MainPiano: React.FC<IMainPianoProps> = props => {
 	// );
 
 	useEffect(() => {
-		console.log(firstVisibleNoteIndex);
+		console.log(
+			firstVisibleNoteIndex,
+			keyWidth,
+			firstVisibleNoteIndex * keyWidth
+			// pianoRef.current?.style,
+			// pianoRef.current?.scrollLeft
+		);
+
+		onChangeOffset(firstVisibleNoteIndex * keyWidth);
 	}, [firstVisibleNoteIndex]);
 
 	return (
 		<div
-			ref={containerRef}
 			id="MainPiano"
 			//@ts-ignore
 			style={{ '--key-width': `${keyWidth}px` }}
 		>
 			<main ref={pianoRef}>
 				{NOTES.map(note => (
-					<PianoKey key={note} note={note} />
+					<PianoKey key={note} note={note}>
+						<div className="note-name">
+							<span style={{ backgroundColor: 'green' }}>
+								{note}
+							</span>
+						</div>
+					</PianoKey>
 				))}
 			</main>
 		</div>
 	);
-};
+}

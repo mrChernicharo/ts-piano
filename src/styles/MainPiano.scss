@@ -15,6 +15,19 @@
 				width: var(--key-width);
 				background-color: white;
 				border-right: 1px solid #aaa;
+
+				.note-name {
+					position: absolute;
+					bottom: calc(var(--key-width) * 0.2);
+					width: var(--key-width);
+					// border: 1px solid red;
+
+					span {
+						// color: black;
+						font-size: min(calc(var(--key-width) * 0.36), 16px);
+						padding: calc(var(--key-width) * 0.1);
+					}
+				}
 			}
 
 			&.black {
@@ -28,6 +41,10 @@
 				margin-left: calc(calc(var(--black-key-width) / 2) * -1);
 				z-index: 2;
 				background-color: black;
+
+				.note-name {
+					display: none;
+				}
 			}
 		}
 	}
