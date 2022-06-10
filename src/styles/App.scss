@@ -1,8 +1,7 @@
 #App {
 	text-align: center;
-
-	min-height: 100vh;
+	height: var(--app-height);
 	display: grid;
-	grid-template-rows: 15vh 20vh 65vh;
-	overflow-x: hidden;
+	grid-template-rows: 15% 20% 65%;
+	// overflow-x: hidden;
 }

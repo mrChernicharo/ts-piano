@@ -4,7 +4,11 @@
 	display: flex;
 	align-items: center;
 
-	.select-container {
-		height: 50px;
+	.content {
+		position: fixed;
+
+		.select-container {
+			height: 50px;
+		}
 	}
 }

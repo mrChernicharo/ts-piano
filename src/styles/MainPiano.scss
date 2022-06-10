@@ -1,9 +1,8 @@
 #MainPiano {
 	// border: 1px solid red;
 	// width: 100vw;
-	--key-width: 80px;
+	--key-width: '';
 	--black-key-width: calc(var(--key-width) * 0.6);
-
 	main {
 		display: flex;
 		position: relative;

@@ -18,15 +18,17 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 
 	return (
 		<div id="MiniPiano">
-			<aside>left aside</aside>
-			<main ref={pianoRef}>
-				{NOTES.map(note => (
-					<PianoKey key={note} note={note} />
-				))}
+			<div className="content">
+				<aside>left aside</aside>
+				<main ref={pianoRef}>
+					{NOTES.map(note => (
+						<PianoKey key={note} note={note} />
+					))}
 
-				<Brush pianoWidth={pianoWidth} />
-			</main>
-			<aside>right aside</aside>
+					<Brush pianoWidth={pianoWidth} />
+				</main>
+				<aside>right aside</aside>
+			</div>
 		</div>
 	);
 };
