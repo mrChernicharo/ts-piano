@@ -11,7 +11,7 @@
 		overflow: hidden;
 
 		.piano-key {
-			transition: 0.7s;
+			transition: 0.3s;
 
 			&.white {
 				width: var(--key-width);
@@ -47,6 +47,10 @@
 				.note-name {
 					display: none;
 				}
+			}
+
+			&.active {
+				background-color: goldenrod;
 			}
 		}
 	}

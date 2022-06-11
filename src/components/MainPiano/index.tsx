@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
 import { useSettingsContext } from '../../hooks/useSettingsContext';
 import { NOTES, NOTE_COLORS } from '../../lib/constants';
+import { getOctave } from '../../lib/helpers';
 import '../../styles/MainPiano.scss';
 import PianoKey from '../shared/PianoKey';
 
@@ -37,13 +38,13 @@ export function MainPiano({ onChangeOffset }: Props) {
 		>
 			<main ref={pianoRef}>
 				{NOTES.map(note => {
-					const octave = Number(note.at(-1));
 					return (
 						<PianoKey key={note} note={note}>
 							<div className="note-name">
 								<span
 									style={{
-										backgroundColor: NOTE_COLORS[octave],
+										backgroundColor:
+											NOTE_COLORS[getOctave(note)],
 									}}
 								>
 									{note}

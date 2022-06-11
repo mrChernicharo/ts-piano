@@ -14,8 +14,8 @@ export default function Brush({ pianoWidth }: Props) {
 	const brushRef = useRef<HTMLDivElement>(null);
 	const { width: screenWidth } = useScreenWidth();
 
-	const [brushWidth, setBrushWidth] = useState(0);
 	const x = useMotionValue(0);
+	const [brushWidth, setBrushWidth] = useState(0);
 
 	const updateBrush = useCallback(() => {
 		setBrushWidth((visibleKeys / WHITE_NOTES_QTD) * pianoWidth);
@@ -30,7 +30,7 @@ export default function Brush({ pianoWidth }: Props) {
 		}
 
 		const keyWidth = pianoWidth / WHITE_NOTES_QTD;
-		const targetKeyIdx = Math.floor(target / keyWidth);
+		const targetKeyIdx = Math.round(target / keyWidth);
 		const targetKeyPos = keyWidth * targetKeyIdx;
 
 		// gotta debug this:
