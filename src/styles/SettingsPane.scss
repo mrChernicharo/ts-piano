@@ -6,9 +6,22 @@
 
 	.content {
 		position: fixed;
+		width: 100%;
+		padding-inline: 1rem;
 
-		.select-container {
-			height: 50px;
+		.visible-keys {
+			display: flex;
+			flex-direction: column;
+
+			p {
+				text-align: right;
+			}
+
+			.selectors {
+				display: flex;
+				align-items: center;
+				justify-content: right;
+			}
 		}
 	}
 }

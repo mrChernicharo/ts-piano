@@ -19,27 +19,29 @@ export const SettingsPane: React.FC<ISettingsPaneProps> = props => {
 	return (
 		<div id="SettingsPane">
 			<div className="content">
-				<p style={{ fontSize: 'small' }}>Visible Keys</p>
+				<div className="visible-keys">
+					<p>Visible Keys</p>
 
-				<input
-					type="range"
-					min="6"
-					max="24"
-					onChange={handleVisibleKeysChange}
-					value={visibleKeys}
-				/>
-				<div className="select-container">
-					<select
-						id="visibleKeys"
-						onChange={handleVisibleKeysChange}
-						value={visibleKeys}
-					>
-						{visibleKeysOptions.map(qtd => (
-							<option key={qtd} value={qtd}>
-								{qtd}
-							</option>
-						))}
-					</select>
+					<div className="selectors">
+						<input
+							type="range"
+							min="6"
+							max="24"
+							onChange={handleVisibleKeysChange}
+							value={visibleKeys}
+						/>
+						<select
+							id="visibleKeys"
+							onChange={handleVisibleKeysChange}
+							value={visibleKeys}
+						>
+							{visibleKeysOptions.map(qtd => (
+								<option key={qtd} value={qtd}>
+									{qtd}
+								</option>
+							))}
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>

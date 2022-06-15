@@ -9,7 +9,8 @@ interface Props {
 }
 
 export default function Brush({ pianoWidth, screenWidth }: Props) {
-	const { visibleKeys, setFirstVisibleNoteIndex } = useSettingsContext();
+	const { visibleKeys, firstVisibleNoteIndex, setFirstVisibleNoteIndex } =
+		useSettingsContext();
 
 	const brushRef = useRef<HTMLDivElement>(null);
 
@@ -42,6 +43,10 @@ export default function Brush({ pianoWidth, screenWidth }: Props) {
 
 		return targetKeyPos;
 	}
+
+	useEffect(() => {
+		console.log('gotta reposition brush now');
+	}, [firstVisibleNoteIndex]);
 
 	// update brush width whenever visibleKeys, pianoWidth or screenWidth change
 	useEffect(updateBrush, [visibleKeys, pianoWidth, screenWidth]);
