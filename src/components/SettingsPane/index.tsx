@@ -10,15 +10,25 @@ export const SettingsPane: React.FC<ISettingsPaneProps> = props => {
 		6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
 	];
 
-	function handleVisibleKeysChange(e: ChangeEvent<HTMLSelectElement>) {
+	function handleVisibleKeysChange(
+		e: ChangeEvent<HTMLSelectElement | HTMLInputElement>
+	) {
 		setVisibleKeys(+e.currentTarget.value);
 	}
 
 	return (
 		<div id="SettingsPane">
 			<div className="content">
+				<p style={{ fontSize: 'small' }}>Visible Keys</p>
+
+				<input
+					type="range"
+					min="6"
+					max="24"
+					onChange={handleVisibleKeysChange}
+					value={visibleKeys}
+				/>
 				<div className="select-container">
-					<label htmlFor="visibleKeys">Visible Keys</label>
 					<select
 						id="visibleKeys"
 						onChange={handleVisibleKeysChange}

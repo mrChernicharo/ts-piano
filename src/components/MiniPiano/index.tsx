@@ -1,4 +1,10 @@
 import { useRef } from 'react';
+import {
+	FaBackward,
+	FaCaretLeft,
+	FaCaretRight,
+	FaForward,
+} from 'react-icons/fa';
 import { useElementWidth } from '../../hooks/useElementWidth';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
 import { NOTES } from '../../lib/constants';
@@ -21,7 +27,15 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 	return (
 		<div id="MiniPiano">
 			<div className="content">
-				<aside>left aside</aside>
+				<aside>
+					<button>
+						<FaBackward />
+					</button>
+
+					<button>
+						<FaCaretLeft />
+					</button>
+				</aside>
 				<main ref={pianoRef}>
 					{NOTES.map(note => (
 						<PianoKey key={note} note={note} />
@@ -29,7 +43,14 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 
 					<Brush pianoWidth={pianoWidth} screenWidth={screenWidth} />
 				</main>
-				<aside>right aside</aside>
+				<aside>
+					<button>
+						<FaCaretRight />
+					</button>
+					<button>
+						<FaForward />
+					</button>
+				</aside>
 			</div>
 		</div>
 	);
