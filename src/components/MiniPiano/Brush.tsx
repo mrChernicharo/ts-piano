@@ -43,8 +43,10 @@ export default function Brush({ pianoWidth, screenWidth }: Props) {
 		return targetKeyPos;
 	}
 
+	// update brush width whenever visibleKeys, pianoWidth or screenWidth change
 	useEffect(updateBrush, [visibleKeys, pianoWidth, screenWidth]);
 
+	// prevent brush overflow right
 	useEffect(() => {
 		const brushOverflowed = x.get() + brushWidth > pianoWidth;
 
@@ -53,10 +55,12 @@ export default function Brush({ pianoWidth, screenWidth }: Props) {
 		}
 	}, [brushWidth]);
 
+	// center brush and piano on mount
 	useEffect(() => {
 		if (pianoWidth && screenWidth) {
 			const mid = pianoWidth / 2;
-			const centralPos = mid - brushWidth / 2;
+			const brush = (visibleKeys / WHITE_NOTES_QTD) * pianoWidth;
+			const centralPos = mid - brush / 2;
 			const initialBrushPos = snapToClosestKey(centralPos);
 			x.updateAndNotify(initialBrushPos);
 		}
