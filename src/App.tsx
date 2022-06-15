@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { MainPiano } from './components/MainPiano';
 import { MiniPiano } from './components/MiniPiano';
 import { SettingsPane } from './components/SettingsPane';
+import { useSettingsContext } from './hooks/useSettingsContext';
 import './styles/App.scss';
 
 export default function App() {
+	const { setFirstVisibleNoteIndex } = useSettingsContext();
 	const containerRef = useRef<HTMLDivElement>(null);
 	// const ref = useRef(null);
 	// const [progress, setProgress] = useState(0);
@@ -24,8 +26,6 @@ export default function App() {
 			left: offset,
 		});
 	}
-
-	useEffect(() => {}, []);
 
 	return (
 		<div ref={containerRef} id="App">

@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useElementWidth } from '../../hooks/useElementWidth';
+import { useScreenWidth } from '../../hooks/useScreenWidth';
 import { NOTES } from '../../lib/constants';
 import '../../styles/MiniPiano.scss';
 import PianoKey from '../shared/PianoKey';
@@ -10,6 +11,7 @@ interface IMiniPianoProps {}
 export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 	const pianoRef = useRef<HTMLDivElement>(null);
 	const { width: pianoWidth } = useElementWidth(pianoRef);
+	const { width: screenWidth } = useScreenWidth();
 
 	// useEffect(() => {
 	// 	snapToClosestKey(x.get());
@@ -25,7 +27,7 @@ export const MiniPiano: React.FC<IMiniPianoProps> = props => {
 						<PianoKey key={note} note={note} />
 					))}
 
-					<Brush pianoWidth={pianoWidth} />
+					<Brush pianoWidth={pianoWidth} screenWidth={screenWidth} />
 				</main>
 				<aside>right aside</aside>
 			</div>
